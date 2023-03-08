@@ -21,12 +21,12 @@ function getNavConfig(lang: 'zh' | 'en'): NavItem[] {
     },
     {
       text: getText('配置', 'Config'),
-      link: getLink('/config/'),
+      link: getLink('/config'),
       activeMatch: '/config',
     },
     {
       text: getText('API', 'API'),
-      link: getLink('/api/'),
+      link: getLink('/api'),
       activeMatch: '/api',
     },
     {
@@ -54,8 +54,12 @@ function getNavConfig(lang: 'zh' | 'en'): NavItem[] {
           link: 'https://github.com/web-infra-dev/rspack/releases',
         },
         {
-          text: getText('开发计划', 'Roadmap'),
+          text: getText('功能规划', 'Roadmap'),
           link: getLink('/misc/roadmap'),
+        },
+        {
+          text: getText('基准测试', 'Benchmark'),
+          link: getLink('/misc/benchmark'),
         },
         {
           text: getText('贡献指南', 'Contributing Guide'),
@@ -64,6 +68,10 @@ function getNavConfig(lang: 'zh' | 'en'): NavItem[] {
         {
           text: getText('品牌指南', 'Branding Guideline'),
           link: getLink('/misc/branding'),
+        },
+        {
+          text: getText('发布公告', 'Announcing Rspack'),
+          link: getLink('/misc/announcement'),
         },
       ],
     },
@@ -141,10 +149,13 @@ function getSidebarConfig(lang: 'zh' | 'en'): Sidebar {
         collapsible: false,
         text: getText('其他', 'Misc'),
         items: [
+          getLink('/misc/FAQ'),
           getLink('/misc/roadmap'),
           getLink('/misc/meet-the-team'),
           getLink('/misc/license'),
           getLink('/misc/branding'),
+          getLink('/misc/benchmark'),
+          getLink('/misc/announcement'),
         ],
       },
     ],
@@ -175,20 +186,24 @@ function getSidebarConfig(lang: 'zh' | 'en'): Sidebar {
         link: getLink('/config/module'),
       },
       {
-        text: getText('Target 目标环境与兼容性', 'Target'),
-        link: getLink('/config/target'),
-      },
-      {
-        text: getText('Builtins 内置功能', 'Builtins'),
-        link: getLink('/config/builtins'),
-      },
-      {
         text: getText('Resolve 模块解析', 'Resolve'),
         link: getLink('/config/resolve'),
       },
       {
-        text: getText('Externals 外部依赖', 'Externals'),
-        link: getLink('/config/externals'),
+        text: getText('Node 全局变量', 'Node'),
+        link: getLink('/config/node'),
+      },
+      {
+        text: getText('Optimization 优化', 'Optimization'),
+        link: getLink('/config/optimization'),
+      },
+      {
+        text: getText('Plugins 插件', 'Plugins'),
+        link: getLink('/config/plugins'),
+      },
+      {
+        text: getText('DevServer 开发服务器', 'DevServer'),
+        link: getLink('/config/devServer'),
       },
       {
         text: getText('Cache 缓存', 'Cache'),
@@ -199,24 +214,32 @@ function getSidebarConfig(lang: 'zh' | 'en'): Sidebar {
         link: getLink('/config/snapshot'),
       },
       {
-        text: getText('Optimization 优化', 'Optimization'),
-        link: getLink('/config/optimization'),
-      },
-      {
         text: getText('Devtool 调试', 'Devtool'),
         link: getLink('/config/devtool'),
+      },
+      {
+        text: getText('Target 目标环境与兼容性', 'Target'),
+        link: getLink('/config/target'),
+      },
+      {
+        text: getText('Watch 监听变更', 'Watch'),
+        link: getLink('/config/watch'),
+      },
+      {
+        text: getText('Externals 外部依赖', 'Externals'),
+        link: getLink('/config/externals'),
       },
       {
         text: getText('Stats 打包信息', 'Stats'),
         link: getLink('/config/stats'),
       },
       {
-        text: getText('DevServer 开发服务器', 'DevServer'),
-        link: getLink('/config/devServer'),
-      },
-      {
         text: getText('Experiments 实验功能', 'Experiments'),
         link: getLink('/config/experiments'),
+      },
+      {
+        text: getText('Builtins 内置功能', 'Builtins'),
+        link: getLink('/config/builtins'),
       },
     ],
     [getLink('/api/')]: [
@@ -256,12 +279,13 @@ export default defineConfig({
   doc: {
     root: path.join(__dirname, 'docs'),
     title: 'Rspack',
-    description: 'A high-performance bundler based on Rust',
+    description: 'A fast Rust-based web bundler',
     logo: {
       light:
         'https://lf3-static.bytednsdoc.com/obj/eden-cn/rjhwzy/ljhwZthlaukjlkulzlp/navbar-logo-2027.png',
       dark: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/rjhwzy/ljhwZthlaukjlkulzlp/navbar-logo-dark-2027.png',
     },
+    icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/rjhwzy/ljhwZthlaukjlkulzlp/favicon-1714.png',
     lang: 'en',
     globalStyles: path.join(__dirname, 'theme', 'index.css'),
     themeConfig: {
@@ -278,15 +302,15 @@ export default defineConfig({
       locales: [
         {
           lang: 'en',
-          title: 'rspack',
-          description: 'A high-performance bundler based on Rust',
+          title: 'Rspack',
+          description: 'A fast Rust-based web bundler',
           nav: getNavConfig('en'),
           sidebar: getSidebarConfig('en'),
           label: 'English',
         },
         {
           lang: 'zh',
-          title: 'rspack',
+          title: 'Rspack',
           description: '基于 Rust 的高性能模块打包工具',
           nav: getNavConfig('zh'),
           sidebar: getSidebarConfig('zh'),
