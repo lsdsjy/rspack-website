@@ -51,3 +51,5 @@ commmonjs
 outputlibraryumdnameddefine
 behaviour
 analysable
+moduleid
+nwjs
